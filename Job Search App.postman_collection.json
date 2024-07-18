@@ -1,0 +1,989 @@
+{
+	"info": {
+		"_postman_id": "2caa4df1-913e-42ea-8990-19d2f689e925",
+		"name": "Job Search App",
+		"description": "The Job Application Management System is a web application designed to manage job postings and applications for companies. It includes features for user authentication and authorization, job posting by HR personnel, job application by users, and various administrative tasks.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22699079"
+	},
+	"item": [
+		{
+			"name": "User APIs",
+			"item": [
+				{
+					"name": "User Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Mohamed\",\n  \"lastName\": \"Ahmed\",\n  \"email\": \"mohamed.2000@gmail.com\",\n  \"password\": \"mohamed123\",\n  \"recoveryEmail\": \"mohamed.20001@gmail.com\",\n  \"DOB\": \"2000-10-01\",\n  \"mobileNumber\": \"010101020190\",\n  \"role\": \"User\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Signin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"login\": \"mohamed.2000@gmail.com\",\n  \"password\": \"mohamed1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{User Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Mohamed A.\",\n  \"lastName\": \"Ahmed\",\n  \"email\": \"mohamed.2000@gmail.com\",\n  \"recoveryEmail\": \"mohamed.20001@gmail.com\",\n  \"DOB\": \"2000-10-01\",\n  \"mobileNumber\": \"010101020180\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{User Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{User Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/auth/myData",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"myData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{User Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/auth/profile/66969fddc5ce6d9f7bced64b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"profile",
+								"66969fddc5ce6d9f7bced64b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{User Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\": \"mohamed123\",\n    \"newPassword\": \"mohamed1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/update-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"update-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{User Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mohamed.2000@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/forget-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"forget-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"\",\n    \"otp\": \"\",\n    \"newPassword\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By RecoveryEmail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{User Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"recoveryEmail\": \"mohamed.a.abdelhay56@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/accounts-by-recovery-email?recoveryEmail=mohamed@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"accounts-by-recovery-email"
+							],
+							"query": [
+								{
+									"key": "recoveryEmail",
+									"value": "mohamed@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**User API**:\n\n- **Signup**: `POST /users/signup` - Register a new user.\n- **Signin**: `POST /users/signin` - Authenticate an existing user.\n- **Profile**: `GET /users/profile` - Get the authenticated user's profile.\n- **Update Profile**: `PUT /users/profile` - Update the authenticated user's profile.\n- **Delete Profile**: `DELETE /users/profile` - Delete the authenticated user's profile.\n- **Forgot Password**: `POST /users/forgot-password` - Initiate password recovery.\n- **Reset Password**: `POST /users/reset-password` - Reset the user's password.\n- **Logout**: `POST /users/logout` - Log out the user."
+		},
+		{
+			"name": "Company APIs",
+			"item": [
+				{
+					"name": "Add Company",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyName\": \"Mohamed's third Company\",\n  \"description\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. \",\n  \"industry\": \"Software\",\n  \"address\": \"masr elgedida\",\n\"numberOfEmployees\": {\n    \"min\": 11,\n    \"max\": 20\n  },\n  \"companyEmail\": \"mohamedscompnay3@gmail.com\",\n  \"companyHR\": \"66969fddc5ce6d9f7bced64b\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Company",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyName\": \"Mohamed's third II Company\",\n  \"description\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. \",\n  \"industry\": \"Software\",\n  \"address\": \"masr elgedida\",\n\"numberOfEmployees\": {\n    \"min\": 11,\n    \"max\": 20\n  },\n  \"companyEmail\": \"mohamedscompnay3@gmail.com\",\n  \"companyHR\": \"66969fddc5ce6d9f7bced64b\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/companies/669955da85cc902aa1cf79b5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"companies",
+								"669955da85cc902aa1cf79b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/companies/669955da85cc902aa1cf79b5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"companies",
+								"669955da85cc902aa1cf79b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Company",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/companies/669955cf85cc902aa1cf79b2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"companies",
+								"669955cf85cc902aa1cf79b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data By Company Name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/companies/search?companyName=Mohamed%27s%20Company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"companies",
+								"search"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "Mohamed%27s%20Company"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Applications by JobID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/companies/6697c77abb78a7c8b2d9c842/applications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"companies",
+								"6697c77abb78a7c8b2d9c842",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Company API**:\n\n- **Create Company**: `POST /companies` - Create a new company profile.\n    \n- **Get All Companies**: `GET /companies` - Retrieve a list of all companies.\n    \n- **Get Company By ID**: `GET /companies/:id` - Retrieve a company profile by its ID.\n    \n- **Update Company**: `PUT /companies/:id` - Update a company profile by its ID.\n    \n- **Delete Company**: `DELETE /companies/:id` - Delete a company profile by its ID.\n    \n- **Search Company By Name**: `GET /companies/search?companyName=xyz` - Search for companies by name."
+		},
+		{
+			"name": "Jobs APIs",
+			"item": [
+				{
+					"name": "Add Job",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"jobTitle\": \"Tester II\",\n  \"jobLocation\": \"Onsite\",\n  \"workingTime\": \"Part-Time\",\n  \"seniorityLevel\": \"Senior\",\n  \"jobDescription\": \"We are seeking a talented and passionate Backend Developer to join our dynamic team.\",\n  \"technicalSkills\": [\"Node.js\", \"mongoDB\", \"mongoose\", \"express\"],\n  \"softSkills\": [\"Communication\", \"Problem-solving\", \"Teamwork\", \"Adaptability\"],\n  \"addedBy\": \"66969fddc5ce6d9f7bced64b\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/jobs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Job",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"jobTitle\": \"Tester Part II\",\n  \"jobLocation\": \"Onsite\",\n  \"workingTime\": \"Part-Time\",\n  \"seniorityLevel\": \"Senior\",\n  \"jobDescription\": \"We are seeking a talented and passionate Backend Developer to join our dynamic team.\",\n  \"technicalSkills\": [\"Node.js\", \"mongoDB\", \"mongoose\", \"express\"],\n  \"softSkills\": [\"Communication\", \"Problem-solving\", \"Teamwork\", \"Adaptability\"],\n  \"addedBy\": \"66969fddc5ce6d9f7bced64b\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/jobs/66995fa86a55acccb11211a7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"jobs",
+								"66995fa86a55acccb11211a7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Job",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/jobs/66995f9f6a55acccb11211a4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"jobs",
+								"66995f9f6a55acccb11211a4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Jobs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/jobs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/jobs/filter?jobTitle=Frontend",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"jobs",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "workingTime",
+									"value": "Part-Time",
+									"disabled": true
+								},
+								{
+									"key": "jobLocation",
+									"value": "Hybrid",
+									"disabled": true
+								},
+								{
+									"key": "seniorityLevel",
+									"value": "Senior",
+									"disabled": true
+								},
+								{
+									"key": "jobTitle",
+									"value": "Frontend"
+								},
+								{
+									"key": "technicalSkills",
+									"value": "Node.js",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Applications by compay name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Company_HR token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/jobs/company?companyName=Mohamed's Company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"jobs",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "Mohamed's Company"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{User Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"jobId\": \"6697c77abb78a7c8b2d9c842\",\n  \"userId\": \"66969fddc5ce6d9f7bced64b\",\n  \"userTechSkills\": [\n    \"HTML5\",\n    \"CSS3\",\n    \"JavaScript\",\n    \"React\"\n  ],\n  \"userSoftSkills\": [\n    \"Communication\",\n    \"Problem-solving\",\n    \"Teamwork\",\n    \"Adaptability\"\n  ],\n  \"userResume\": \"User.pdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/jobs/apply",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"jobs",
+								"apply"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Job API**:\n\n- **Create Job**: `POST /jobs` - Create a new job posting.\n    \n- **Get All Jobs**: `GET /jobs` - Retrieve a list of all job postings.\n    \n- **Get Job By ID**: `GET /jobs/:id` - Retrieve a job posting by its ID.\n    \n- **Update Job**: `PUT /jobs/:id` - Update a job posting by its ID.\n    \n- **Delete Job**: `DELETE /jobs/:id` - Delete a job posting by its ID.\n    \n- **Get Jobs By Company**: `GET /jobs/company?companyName=xyz` - Retrieve job postings for a specific company."
+		},
+		{
+			"name": "Collecting Data At Excel File",
+			"item": [
+				{
+					"name": "Excel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `",
+									"<style type=\"text/css\">",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+									"    .tftable tr {background-color:#ffffff;}",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+									"    .tftable tr:hover {background-color:#e0ffff;}",
+									"</style>",
+									"",
+									"<table class=\"tftable\" border=\"1\">",
+									"    <tr>",
+									"        <th>JobId</th>",
+									"        <th>UserId</th>",
+									"        <th>FirstName</th>",
+									"        <th>LastName</th>",
+									"        <th>Email</th>",
+									"        <th>TechnicalSkills</th>",
+									"        <th>SoftSkills</th>",
+									"    </tr>",
+									"    ",
+									"    {{#each response.sheetData.row}}",
+									"        <tr>",
+									"            <td>{{c.[0].v}}</td>",
+									"            <td>{{c.[1].v}}</td>",
+									"            <td>{{c.[2].v}}</td>",
+									"            <td>{{c.[3].v}}</td>",
+									"            <td>{{c.[4].v}}</td>",
+									"            <td>{{c.[5].v}}</td>",
+									"            <td>{{c.[6].v}}</td>",
+									"        </tr>",
+									"    {{/each}}",
+									"</table>",
+									"`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    var jsonObject = xml2Json(pm.response.text());",
+									"    return { response: jsonObject }",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{User Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/applications/excel?companyId=6696f1b3317ce1745d6924bc&date=2024-07-18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"applications",
+								"excel"
+							],
+							"query": [
+								{
+									"key": "companyId",
+									"value": "6696f1b3317ce1745d6924bc"
+								},
+								{
+									"key": "date",
+									"value": "2024-07-18"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Collect applications data in excel file"
+		}
+	],
+	"variable": [
+		{
+			"key": "Company_HR token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY5ZmRkYzVjZTZkOWY3YmNlZDY0YiIsImlhdCI6MTcyMTMyNDkwMiwiZXhwIjoxNzIxMzI4NTAyfQ.rvJz63LcmL75Jo6_cC8it7Fykz0uZQgm0tTzUKULO8o"
+		},
+		{
+			"key": "User Token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTkyNjM1ODVjYzkwMmFhMWNmNzk3YSIsImlhdCI6MTcyMTMxMzEyNywiZXhwIjoxNzIxMzE2NzI3fQ.3HJr0g-_p34_koarrQsprrIO-Ex-WqzLbC49NJZVxXA"
+		}
+	]
+}
